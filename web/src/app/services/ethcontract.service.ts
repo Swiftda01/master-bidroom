@@ -16,11 +16,11 @@ export class EthcontractService {
 private web3Provider: any
 
 constructor() {
-  if (typeof window.web3 !== 'undefined') {
-    this.web3Provider = window.web3.currentProvider;
-  } else {
-    this.web3Provider = new Web3.providers.HttpProvider('http://localhost:7545');
-  }
+  // if (typeof window.web3 !== 'undefined') {
+  //   this.web3Provider = window.web3.currentProvider;
+  // } else {
+    this.web3Provider = new Web3.providers.HttpProvider('http://127.0.0.1:7545');
+  // }
   window.web3 = new Web3(this.web3Provider);
 }
 
