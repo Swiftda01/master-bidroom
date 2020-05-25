@@ -2,16 +2,16 @@ pragma solidity ^0.5.16;
 
 contract Payment {
   address transferFrom;
-  address transferTo;
+  address payable transferTo;
   uint paymentAmount;
 
   constructor() public {
     transferFrom = msg.sender;
   }
 
-  event TransferFund(address _transferTo, address _transferFrom, uint amount);
+  event TransferFund(address payable _transferTo, address _transferFrom, uint amount);
 
-  function transferFund(address _transferTo) public payable returns (bool) {
+  function transferFund(address payable _transferTo) public payable returns (bool) {
     transferTo = _transferTo;
     transferTo.transfer(msg.value);
     emit TransferFund(transferTo, transferFrom, msg.value);
