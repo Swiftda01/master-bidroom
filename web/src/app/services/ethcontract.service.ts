@@ -30,7 +30,7 @@ getAccountInfo() {
       if(err === null) {
         window.web3.eth.getBalance(account, function(err, balance) {
           if(err === null) {
-            return resolve({fromAccount: account, balance: window.web3.fromWei(balance, 'ether')});
+            return resolve({fromAccount: account, balance: window.web3.utils.fromWei(balance, 'ether')});
           } else {
             return reject('error!');
           }
@@ -55,7 +55,7 @@ transferEther(
         _transferTo,
         {
           from: _transferFrom,
-          value: window.web3.toWei(_amount, 'ether')
+          value: window.web3.utils.toWei(_amount, 'ether')
         });
       }).then(function(status) {
         if(status) {
